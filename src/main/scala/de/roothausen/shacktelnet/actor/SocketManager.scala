@@ -39,7 +39,7 @@ class SocketManager(hostName: String, callBack: CometActor) extends Actor {
     out.close()
     in.close()
     socket.close()
-  //7  exit('stop)
+    exit()
   }
 
   private def sendCommand(cmd: String): Unit = {

@@ -21,14 +21,14 @@ class ShackActor extends CometActor {
   private val hostName = "localhost"
   private val socketManager = new SocketManager(hostName, this)
 
-  private lazy val inputArea = findKids(defaultXml, "tlnt", "input")
-  private lazy val bodyArea = findKids(defaultXml, "tlnt", "body")
+  private lazy val inputArea = findKids(defaultXml, "wts", "input")
+  private lazy val bodyArea = findKids(defaultXml, "wts", "body")
   
-  def render = bind("tlnt", bodyArea, "resp" -> respSpan)
+  def render = bind("wts", bodyArea, "resp" -> respSpan)
   def respSpan = <div id="resp" />
 
   override lazy val fixedRender: Box[NodeSeq] =
-    ajaxForm(bind("tlnt", inputArea,
+    ajaxForm(bind("wts", inputArea,
                   "input" -> text("", sendCommand _)))
 
   override def localSetup = {
