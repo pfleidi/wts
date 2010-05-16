@@ -43,7 +43,6 @@ class SocketManager(hostName: String, callBack: CometActor) extends Actor {
   }
 
   private def sendCommand(cmd: String): Unit = {
-    println("sendCmd:" + cmd)
     out.writeBytes(cmd + "\n")
     out.flush()
   }
@@ -59,7 +58,6 @@ class Receiver(val in: DataInputStream, val actor: CometActor) extends Thread {
     while(true) {
       while(inReader.ready()) {
         val line = inReader.readLine()
-        println("receive:" + line)
         actor ! Response(line)
       }
       Thread.sleep(500)
